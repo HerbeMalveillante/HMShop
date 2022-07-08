@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content %}
+<h1 class="text-center font-bold text-2xl m-10">Login</h1>
+
+<form class="w-full flex flex-col items-center justify-center" method="POST" action="">
+	<div class="border-2 border-gray-600 p-20 w-1/2 text-xl flex flex-col justify-center">
+		<div class="flex flex-col gap-3">
+			<div class="flex gap-10">
+				<label class="w-full" for="email">E-mail Address</label>
+				<input
+					class="w-full border border-gray-300 p-1"
+					type="email"
+					name="email"
+					id="email"
+					placeholder="Enter email"
+				/>
+			</div>
+			<div class="flex gap-10">
+				<label class="w-full" for="password">Password</label>
+				<input
+					class="w-full border border-gray-300 p-1"
+					type="password"
+					name="password"
+					id="paddword"
+					placeholder="Enter password"
+				/>
+			</div>
+			<br />
+		</div>
+		<button class="bg-blue-600 text-white font-bold text-2xl p-3 rounded-xl" type="submit">Login</button>
+	</div>
+</form>
+
+{% endblock %}

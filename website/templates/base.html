@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<title>{% block title %}Home{% endblock %}</title>
+	</head>
+	<body>
+		<nav class="bg-gray-600 text-white w-full h-16 flex items-center gap-x-10 p-4 font-bold text-xl">
+			<div class="group">
+				<a href="/">Home</a>
+				<div class="w-0 group-hover:w-full h-1 bg-white transition-all duration-200 ease-in-out"></div>
+			</div>
+			<div class="group">
+				<a href="/login">Login</a>
+				<div class="w-0 group-hover:w-full h-1 bg-white transition-all duration-200 ease-in-out"></div>
+			</div>
+			<div class="group">
+				<a href="/logout">Logout</a>
+				<div class="w-0 group-hover:w-full h-1 bg-white transition-all duration-200 ease-in-out"></div>
+			</div>
+			<div class="group">
+				<a href="/sign-up">Sign-Up</a>
+				<div class="w-0 group-hover:w-full h-1 bg-white transition-all duration-200 ease-in-out"></div>
+			</div>
+		</nav>
+
+		{% with messages = get_flashed_messages(with_categories=true) %} {%if messages%} {% for message in messages %}
+		{% if message[0] == 'error' %}
+		<div class="bg-red-600 text-white p-4 m-4 text-center">{{ message[0] + " : " + message[1]}}</div>
+		{% elif message[0] == 'success' %}
+		<div class="bg-green-600 text-white p-4 m-4 text-center">{{ message[0] + " : " + message[1]}}</div>
+		{% endif %} {% endfor %} {% endif %} {% endwith %}
+
+		<div class="">{% block content %}{% endblock %}</div>
+	</body>
+</html>
