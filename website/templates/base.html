@@ -8,22 +8,25 @@
 	</head>
 	<body>
 		<nav class="bg-gray-600 text-white w-full h-16 flex items-center gap-x-10 p-4 font-bold text-xl">
+			{% if user.is_authenticated %}
 			<div class="group">
 				<a href="/">Home</a>
-				<div class="w-0 group-hover:w-full h-1 bg-white transition-all duration-200 ease-in-out"></div>
-			</div>
-			<div class="group">
-				<a href="/login">Login</a>
 				<div class="w-0 group-hover:w-full h-1 bg-white transition-all duration-200 ease-in-out"></div>
 			</div>
 			<div class="group">
 				<a href="/logout">Logout</a>
 				<div class="w-0 group-hover:w-full h-1 bg-white transition-all duration-200 ease-in-out"></div>
 			</div>
+			{% else %}
+			<div class="group">
+				<a href="/login">Login</a>
+				<div class="w-0 group-hover:w-full h-1 bg-white transition-all duration-200 ease-in-out"></div>
+			</div>
 			<div class="group">
 				<a href="/sign-up">Sign-Up</a>
 				<div class="w-0 group-hover:w-full h-1 bg-white transition-all duration-200 ease-in-out"></div>
 			</div>
+			{% endif %}
 		</nav>
 
 		{% with messages = get_flashed_messages(with_categories=true) %} {%if messages%} {% for message in messages %}
@@ -34,5 +37,7 @@
 		{% endif %} {% endfor %} {% endif %} {% endwith %}
 
 		<div class="">{% block content %}{% endblock %}</div>
+
+		<script type="text/javascript" src="{{ url_for('static', filename='index.js')}}"></script>
 	</body>
 </html>
